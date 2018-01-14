@@ -343,7 +343,7 @@ def schedule_edit():
 		entry = {  'id': 'new',
 				'date':'', 
 				'target_cool':'26',
-				'target_heat':'1868',
+				'target_heat':'18',
 				'time_on':'12:00 AM',
 				'time_off':'12:00 AM'
 				}
