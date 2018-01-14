@@ -360,11 +360,11 @@ def schedule_submit():
 				'time_off': request.form.get('time_off', '')
 			}
 	
-	date_check = [  'LUNEDÌ', 
-					'MARTEDÌ', 
-					'MERCOLEDÌ', 
-					'GIOVEDÌ', 
-					'VENERDÌ', 
+	date_check = [  'LUNEDI', 
+					'MARTEDI', 
+					'MERCOLEDI', 
+					'GIOVEDI', 
+					'VENERDI', 
 					'SABATO', 
 					'DOMENICA', 
 					'LAVORATIVI', 
