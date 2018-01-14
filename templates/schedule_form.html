@@ -30,8 +30,8 @@
     <div class="container">
     
     <br>
-    <h2 style="float:left;">Schedule</h2>
-    <a class="btn" href="/schedule/edit?id=new" style="float: right;">Add Entry</a>
+    <h2 style="float:left;">Programmazione</h2>
+    <a class="btn" href="/schedule/edit?id=new" style="float: right;">Aggiungi</a>
     <hr style="width:100%;display:inline-block;">
     {% if options %}
         <table class="table table-striped table-bordered table-hover model-list blue-letterpress">
@@ -39,11 +39,11 @@
             <tr>
                     
                     <th class="col-md-1">&nbsp;</th>
-                    <th class="column-header col-target_heat">Target Heat</th>
-                    <th class="column-header col-target_cool">Target Cool</th>
-                    <th class="column-header col-date">Date</th>
-                    <th class="column-header col-time_on">Time On</th>
-                    <th class="column-header col-time_off">Time Off</th>
+                    <th class="column-header col-target_heat">Target Risc.</th>
+                    <!-- th class="column-header col-target_cool">Target Cool</th -->
+                    <th class="column-header col-date">Data</th>
+                    <th class="column-header col-time_on">Inizio/th>
+                    <th class="column-header col-time_off">Fine</th>
                     <th class="col-md-1">&nbsp;</th>
             </tr>
         </thead>
@@ -57,7 +57,7 @@
                     <form class="icon" method="POST" action="/schedule/delete">
                       <input id="id" name="id" type="hidden" value="{{ option['id'] }}">
                       <input id="url" name="url" type="hidden" value="/schedule/">
-                      <button onclick="return confirm('Are you sure you want to delete this record?');" title="Delete record">
+                      <button onclick="return confirm('Sei sicuro di cancellare?');" title="Cancella">
                         <span class="fa fa-trash glyphicon glyphicon-trash blue-letterpress"></span>
                       </button>
                     </form>
