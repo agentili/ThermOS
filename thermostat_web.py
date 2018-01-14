@@ -228,7 +228,7 @@ def getWhatsOn():
 		try:
 			temp = "ON" if type(value) == int and GPIO.input(value) else "OFF"
 		except:
-			temp = "Config Error"
+			temp = "Misconfigured"
 		html += '<p id="{0}">{1} (GPIO {2}): {3} </p>'.format(key, key.upper(), value, temp)
 	return html
 
