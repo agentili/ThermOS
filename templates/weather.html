@@ -13,9 +13,9 @@
 
 <body class="weather" style="display: inline-block; width: 100%">
     <div class="container">
-        <h1 class="blue-letterpress" style="float: left;">Local Forecast</h1>
+        <h1 class="blue-letterpress" style="float: left;">Previsione Locale</h1>
         <hr style="width:100%;">
-        <h3 class="blue-letterpress">Hourly Temperature</h3>
+        <h3 class="blue-letterpress">Temperatura Oraria</h3>
         <div class="blue-inset-box" style="height:250px; overflow: hidden;">
             <div class="dragscroll" style="
                 width: 100%;
@@ -26,7 +26,7 @@
             {{ graph | safe }}
             </div>
         </div>
-        <h3 class="blue-letterpress" {{ hideForecast }}>7 Day Forecast</h3>
+        <h3 class="blue-letterpress" {{ hideForecast }}>Previsione a 7gg</h3>
         <div class="blue-inset-box" style="overflow: hidden;height:470px;" {{ hideForecast }}>
             <div class="dragscroll" style="width: 100%; overflow-x: auto; margin: auto; overflow-y: hidden;">
                 <table id="forecast">
@@ -34,21 +34,21 @@
                     <thead>
                         <tr>
                             <th class="sticky-col blue-letterpress" style="padding: 13px 0 0 10px;
-                                                                            box-shadow: inset 0px -20px 20px -20px;">Day</th>
+                                                                            box-shadow: inset 0px -20px 20px -20px;">Giorno</th>
                             <th style="display:inline-block; width:150px"></th>
-                            <th class="blue-letterpress">Summary</th>
-                            <th class="blue-letterpress">Low</th>
-                            <th class="blue-letterpress">High</th>
-                            <th class="blue-letterpress">Sunrise</th>
-                            <th class="blue-letterpress">Sunset</th>
-                            <th class="blue-letterpress">Moon</th>
+                            <th class="blue-letterpress">Sommario</th>
+                            <th class="blue-letterpress">Bassa</th>
+                            <th class="blue-letterpress">Alta</th>
+                            <th class="blue-letterpress">Alba</th>
+                            <th class="blue-letterpress">Tramonto</th>
+                            <th class="blue-letterpress">Luna</th>
                             <th class="blue-letterpress">Precip</th>
-                            <th class="blue-letterpress">Wind</th>
-                            <th class="blue-letterpress">Humidity</th>
-                            <th class="blue-letterpress">Ozone</th>
-                            <th class="blue-letterpress">Pressure</th>
-                            <th class="blue-letterpress">Cloud Cover</th>
-                            <th class="blue-letterpress">Visibility</th>
+                            <th class="blue-letterpress">Vento</th>
+                            <th class="blue-letterpress">Umidità</th>
+                            <th class="blue-letterpress">Ozono</th>
+                            <th class="blue-letterpress">Pressione</th>
+                            <th class="blue-letterpress">Nuvolosità</th>
+                            <th class="blue-letterpress">Visibilità</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,7 +82,7 @@
                 </table>
             </div>
         </div>
-        <h3 class="blue-letterpress"  {{ hideAlerts }}>Local Alerts</h3>
+        <h3 class="blue-letterpress"  {{ hideAlerts }}>Allerte</h3>
         <div class="blue-inset-box" {{ hideAlerts }}>
             {{ alerts | safe}}
         </div>

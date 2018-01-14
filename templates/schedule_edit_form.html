@@ -84,11 +84,11 @@
         <table style="width: 500px; text-align: right;">
             <tbody>
                 <tr>
-                    <td><h1 class="blue-letterpress">When</h1></td>
+                    <td><h1 class="blue-letterpress">Quando</h1></td>
                     <td>
                         <div class="styled-select blue semi-square" style="margin: 0 auto; text-align: center;">
                                 <select class="styled-select blue semi-square" name="timeFrame">
-                                    {% for option in ['DATE', 'MONDAYS', 'TUESDAYS', 'WEDNESDAYS', 'THURSDAYS', 'FRIDAYS', 'SATURDAYS', 'SUNDAYS', 'WEEKDAYS', 'WEEKENDS', 'ALWAYS'] %}
+                                    {% for option in ['DATA', 'LUNEDÌ', 'MARTEDÌ', 'MERCOLEDÌ', 'GIOVEDÌ', 'VENERDÌ', 'SABATO', 'DOMENICA', 'LAVORATIVI', 'FESTIVI', 'SEMPRE'] %}
                                         <option value="{{ option }}" {% if option is equalto (entry.date) %}selected{% endif %}>{{ option }}</option>
                                     {% endfor %}
                                     </select>
@@ -97,7 +97,7 @@
                 </tr>
 
                 <tr id="date-row">
-                    <td><h1 class="blue-letterpress">Date</h1></td>
+                    <td><h1 class="blue-letterpress">Data</h1></td>
                     <td>
                         <div id="datepicker" class="input-append date">
                           <input class="box-letterpress blue-letterpress" type="text" name="date" onClick="this.select();" ></input>
@@ -110,7 +110,7 @@
                 
         
                 <tr>
-                    <td><h1 class="blue-letterpress">Time On</h1></td>
+                    <td><h1 class="blue-letterpress">Inizio</h1></td>
                     <td>
                         <div id="time-on" class="input-append date">
                           <input class="box-letterpress blue-letterpress" type="text" name="time_on" value="{{ entry.time_on }}"></input>
@@ -122,7 +122,7 @@
                 </tr>
         
                 <tr>
-                    <td><h1 class="blue-letterpress">Time Off</h1></td>
+                    <td><h1 class="blue-letterpress">Fine</h1></td>
                     <td>
                         <div id="time-off" class="input-append date">
                           <input class="box-letterpress blue-letterpress" type="text" name="time_off" value="{{ entry.time_off }}"></input>
@@ -170,8 +170,8 @@
                         <td><input class="round-letterpress blue-letterpress" type="number" id="target_cool" name="target_cool" value={{ entry.target_cool }} onClick="this.select();" ></td>
                     </tr>
                     <tr class="blue-letterpress" style="font-size: 35px;line-height: 20px;">
-                        <td>Target Heat</td>
-                        <td>Target Cool</td>
+                        <td>Temp Riscaldamento</td>
+                        <td>Temp Condizionamento</td>
                     </tr>
                 </table>
                 <br>

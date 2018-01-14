@@ -318,6 +318,7 @@ class ThermOSDaemon(object):
                                                         units = ("us" if self.config['units'] == 'F' else "si")) 
                                                                                                     
                     hourly = forecast.hourly()
+                    print hourly
                     hours = []
                     for data in hourly.data:
                         t = data.time + utcDelta
