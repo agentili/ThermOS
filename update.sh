@@ -5,6 +5,7 @@ SCRIPTPATH=`dirname $SCRIPT`
 cd $SCRIPTPATH
 VERSION=$(cat version 2>/dev/null)
 OLD_VERSION=$2
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 #if not root user, restart script as root
 if [ "$(whoami)" != "root" ]; then
@@ -16,16 +17,16 @@ fi
 shopt -s nocasematch
 if ! [[ "$1" == "-noupdate" ]]; then
     echo "Performing self-update..."
-    git config --global user.email "none@none.com"
-    git config --global user.name "none@none.com"
-    git checkout master
+    git config --global user.email "agentili@navionics.com"
+    git config --global user.name "agentili"
+    git checkout $BRANCH
     git stash
     git pull
     git stash pop
     git config --global --unset user.email
     git config --global --unset user.name
     exec /bin/bash update.sh -noupdate $VERSION
-fi
+fi 
 
 # find current version, then fallthrough to latest version
 case $OLD_VERSION in
