@@ -89,7 +89,7 @@
       <div class="container">
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav pager">
-            <li class="modern embossed-link"><a id="fan-btn" data-src="/fan"><img src="static/images/fan-small.png"><label id="fanStatus">{{ fanStatus }}</label></a></li>
+            <!-- <li class="modern embossed-link"><a id="fan-btn" data-src="/fan"><img src="static/images/fan-small.png"><label id="fanStatus">{{ fanStatus }}</label></a></li> -->
             <li class="modern embossed-link"><a id="system-btn" class="button-popup" href="#popupPanel" data-rel="popup" data-position-to="window" data-src="/system"><img src="static/images/system-small.png"><label id="systemStatus">{{ systemMode }}</label></a></li>
             <li class="modern embossed-link"><a id="schedule-btn" class="button-popup" href="#popupPanel" data-rel="popup" data-position-to="window" data-src="/schedule"><img src="static/images/schedule-small.png"></a></li>
             <li class="modern embossed-link"><a id="hold-btn" class="button-popup" href="#popupPanel" data-rel="popup" data-position-to="window" data-src="/hold"><img src="static/images/hold-small.png"><label id="holdTime">{{ holdTime }}</label></a></li>
@@ -108,7 +108,7 @@
     <div id="content">
         <div id="container1">
             <div>
-                <p id="indoorLabel">INDOOR</p>
+                <p id="indoorLabel">Interno</p>
                     <p id="currentTemp"><span class="unit-{{ unit }}" id="indoorTempSpan">{{ temp }}</span></p>
                     <div id="currentSchedule">
                         {{ targetTemps }}
@@ -118,7 +118,7 @@
         </div>
         <div class={{ weatherVisible }} id="container2">
             <div>
-                <p id="outdoorLabel">OUTDOOR</p>
+                <p id="outdoorLabel">Esterno</p>
                 <a href="/forecast" data-ajax="false"><div id="outdoorTempContainer">{{ currentWeather }}</div></a>
                 <span id="currentScheduleSpan"></span>
             </div>

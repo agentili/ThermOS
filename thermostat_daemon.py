@@ -178,7 +178,7 @@ class ThermOSDaemon(object):
             GPIO.output(self.config['fan_pin'], False)
         self.recordDebugLog("STATE: Switching to idle")
         # delay to preserve compressor
-        time.sleep(360)
+        time.sleep(60)
         return "OFF"
     
     def powerDown(self):
