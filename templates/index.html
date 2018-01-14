@@ -184,7 +184,7 @@ $(".button-popup").click(function(){
         $.ajax({
             url : $SCRIPT_ROOT + "/_liveUpdate",
             success : function(result){
-                $('#fanStatus').html($(result).find('#fanModeContainer').html());
+                // $('#fanStatus').html($(result).find('#fanModeContainer').html());
                 $('#systemStatus').html($(result).find('#systemModeContainer').html());
                 $('#holdTime').html($(result).find('#holdTimeContainer').html());
                 $('#targetTemps').html($(result).find('#targetTemps').html());

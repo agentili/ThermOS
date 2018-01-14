@@ -799,7 +799,6 @@ def liveUpdate():
 	if temp == "-666.0":
 		temp = "Err"
 	html = '<div id="updateContainer"> \
-				<div id="fanModeContainer">{fanMode}</div> \
 				<div id="systemModeContainer">{systemMode}</div> \
 				<div id="holdTimeContainer">{holdTime}</div> \
 				<div id="indoorTempContainer">{temp}</div> \
