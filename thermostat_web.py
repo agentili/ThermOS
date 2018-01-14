@@ -149,13 +149,13 @@ def getCurrentWeather():
 			currentIcon = '<img id="currentWeatherIcon" src="static/images/weather/icons/128/{0}.png">'.format(hourly['icon'])
 			currentHumidity = '<p id="outdoorHumidity"> \
 									<span id="humidity">{0:.0f}%</span> \
-									<span id="humidityLabel">Humidity</span> \
+									<span id="humidityLabel">Umidità</span> \
 								</p>'.format(hourly['humidity'] * 100)
 			
 			html = '{0}{1}{2}'.format(currentTemp, currentIcon, currentHumidity)
 			return html.decode("utf-8").replace("&amp;","&")
 			
-		return '<span style="font-size:60px;">Weather not yet populated</span>'
+		return '<span style="font-size:60px;">Previsioni non ancora disponibili</span>'
 
 		
 def getDailyWeather():
@@ -228,7 +228,7 @@ def getWhatsOn():
 		try:
 			temp = "ON" if type(value) == int and GPIO.input(value) else "OFF"
 		except:
-			temp = "Misconfigured"
+			temp = "Config Error"
 		html += '<p id="{0}">{1} (GPIO {2}): {3} </p>'.format(key, key.upper(), value, temp)
 	return html
 
@@ -342,8 +342,8 @@ def schedule_edit():
 	else:
 		entry = {  'id': 'new',
 				'date':'', 
-				'target_cool':'74',
-				'target_heat':'68',
+				'target_cool':'26',
+				'target_heat':'1868',
 				'time_on':'12:00 AM',
 				'time_off':'12:00 AM'
 				}
@@ -360,21 +360,21 @@ def schedule_submit():
 				'time_off': request.form.get('time_off', '')
 			}
 	
-	date_check = [  'MONDAYS', 
-					'TUESDAYS', 
-					'WEDNESDAYS', 
-					'THURSDAYS', 
-					'FRIDAYS', 
-					'SATURDAYS', 
-					'SUNDAYS', 
-					'WEEKDAYS', 
-					'WEEKENDS', 
-					'ALWAYS' ]
+	date_check = [  'LUNEDÌ', 
+					'MARTEDÌ', 
+					'MERCOLEDÌ', 
+					'GIOVEDÌ', 
+					'VENERDÌ', 
+					'SABATO', 
+					'DOMENICA', 
+					'LAVORATIVI', 
+					'FESTIVI', 
+					'SEMPRE' ]
 	
 	# Basic Error/Format Checking
 	found_errors = False
 	if not entry['date'] in date_check and len(entry['date'].split('/')) != 3:
-		flash("Date does not conform to standards","danger")
+		flash("Formato data non conforme","danger")
 		found_errors = True
 		
 	try:
@@ -383,15 +383,15 @@ def schedule_submit():
 		if entry['target_cool']:
 			entry['target_cool'] = int(entry['target_cool'])
 	except:
-		flash("Target temperatures must be a valid number", "danger")
+		flash("Temperatura deve essere un numero valido", "danger")
 		found_errors = True
 		
 	if not len(entry['time_on'].split(':')) == 2:
-		flash("'Time on' is not in a recognized format", "danger")
+		flash("'Inizio' ha un formato non compatibile", "danger")
 		found_errors = True
 		
 	if not len(entry['time_off'].split(':')) == 2:
-		flash("'Time off' is not in a recognized format", "danger")
+		flash("'Fine' ha un formato non compatibile", "danger")
 		found_errors = True
 		
 	if found_errors:
@@ -404,7 +404,7 @@ def schedule_submit():
 							(None, entry['target_heat'], entry['target_cool'], entry['date'], entry['time_on'], entry['time_off']))
 		thermConn.commit()
 		reloadDaemon()
-		flash("New Entry Added!","success")
+		flash("Aggiunto!","success")
 		return redirect(url_for('schedule_form'))
 	else:
 		thermCursor.execute('INSERT OR REPLACE INTO schedule \
@@ -412,7 +412,7 @@ def schedule_submit():
 							(entry['id'], entry['target_heat'], entry['target_cool'], entry['date'], entry['time_on'], entry['time_off']))
 		thermConn.commit()
 		reloadDaemon()
-		flash("Entry #{0} has been updated!".format(entry['id']),"info")
+		flash("Elemento #{0} è stato aggiornato!".format(entry['id']),"info")
 		return redirect(url_for('schedule_form'))
  
 
@@ -442,7 +442,7 @@ def hold_submit():
 		if request.form['timeFrame'] == "OFF":
 			thermCursor.execute('DELETE FROM schedule WHERE id= -1')
 			thermConn.commit()
-			flash("Temperature hold has been disabled!")
+			flash("Mantenimento Temperatura disabilitato")
 		else:
 			now = datetime.now()
 			if request.form['timeFrame'] != 'FOREVER':
@@ -466,7 +466,7 @@ def hold_submit():
 		reloadDaemon()
 		return redirect(url_for('hold_form'))
 	else:
-		flash("Must be a valid number", 'danger')
+		flash("Deve essere un numero valido!", 'danger')
 		return redirect(url_for('hold_form'))
 
 
@@ -513,7 +513,7 @@ def system_submit():
 		newTargetTemp = float(request.form['target'])
 	except:
 		newTargetTemp = None
-		flash("Must be a valid number!", 'danger')
+		flash("Deve essere un numero valido!", 'danger')
 	else:
 		if mode == 'COOL':
 			targetCool = newTargetTemp
@@ -522,14 +522,14 @@ def system_submit():
 		elif mode == 'HEAT':
 			targetCool = status['target_cool']
 			targetHeat = newTargetTemp
-			msg = "Heating to {0}&deg;{1}".format(targetHeat, CONFIG['units'])
+			msg = "Riscaldamento a {0}&deg;{1}".format(targetHeat, CONFIG['units'])
 		else:
 			targetCool = status['target_cool']
 			targetHeat = status['target_heat']
 			if mode == 'OFF':
-				msg = "Turning off system"
+				msg = "Spegnimento..."
 			else:
-				msg = "Now using the schedule"
+				msg = "Utilizzo la programmazione"
 		
 		thermCursor.execute('DELETE FROM status')
 		thermCursor.execute('INSERT INTO status VALUES (?, ?, ?, ?)', (targetCool, targetHeat, mode, status['fan_mode']))
